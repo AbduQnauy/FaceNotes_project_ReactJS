@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import CardList  from './components/cardList/cardList.component';
 import SearchBox from './components/searchBox/searchBox.component' 
@@ -37,6 +38,30 @@ const App = () =>{
           </div>
       );
   
+=======
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+>>>>>>> parent of b7a9605 (FaceNotes_classBasedComponent_project)
 }
 
 // class App extends Component {
