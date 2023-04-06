@@ -1,0 +1,10 @@
+.card-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly   ;
+    padding: 1em 0;
+}
+
+div:last-child{
+    margin-bottom: 0;
+}

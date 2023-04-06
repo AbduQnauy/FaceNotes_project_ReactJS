@@ -1,29 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import CardList  from './components/cardList/cardList.component';
 import SearchBox from './components/searchBox/searchBox.component' 
+import { getData } from './utils/data.utils'
 import './App.css';
 
 
+export type Face = {
+  id: string;
+  name: string;
+  email: string
+}
+
 const App = () =>{
 
-  const [faces, setFaces] = useState([])
+  const [faces, setFaces] = useState<Face[]>([])
   const [searchField, setSearchField] = useState('')
   const [newFaces, setNewFaces] = useState(faces)
   // console.log(searchField);
   
-  console.log('render');
-
   useEffect(() =>{
-      fetch('https://jsonplaceholder.typicode.com/users')
-  .then(res => res.json())
-  .then(data => setFaces(data))
+  const fetchUser = async () => {
+    const users = await getData<Face[]>('https://jsonplaceholder.typicode.com/users') 
+    setFaces(users)
+  }
+  fetchUser()
   }, [])
 
   useEffect(() =>{
     setNewFaces(faces.filter(face => face.name.toLowerCase().includes(searchField)))
   }, [faces, searchField])
 
-  const changeSearchHandler = (event) =>{
+  const changeSearchHandler = (event: ChangeEvent<HTMLInputElement>): void =>{
     const searchFieldString = event.target.value?.toLowerCase()
     setSearchField(searchFieldString)
   }
